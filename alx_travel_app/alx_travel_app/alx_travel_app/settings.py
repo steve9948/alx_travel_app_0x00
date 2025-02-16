@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 import environ
 
+
 # Initialize environment variables
 env = environ.Env()
 environ.Env.read_env()  # Reads the .env file
@@ -107,11 +108,11 @@ WSGI_APPLICATION = 'alx_travel_app.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',  # MySQL backend
-        'NAME': 'alx_travel_db',  #env('DB_NAME'),               # Fetch from .env
-        'USER': 'root', #env('DB_USER'),               # Fetch from .env
-        'PASSWORD': 'root', #env('DB_PASSWORD'),       # Fetch from .env
-        'HOST': 'localhost', #env('DB_HOST'),               # Fetch from .env
-        'PORT': '3306', #env('DB_PORT'),               # Fetch from .env
+        'NAME': env('DB_NAME', default='alx_travel_db'),               # Fetch from .env
+        'USER': env('DB_USER', default='root'),               # Fetch from .env
+        'PASSWORD':env('DB_PASSWORD', default='steve9948'),       # Fetch from .env
+        'HOST':env('DB_HOST', default='localhost'),               # Fetch from .env
+        'PORT': env('DB_PORT', default='3306'),               # Fetch from .env
     }
 }
 
